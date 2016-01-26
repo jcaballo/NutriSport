@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>hello phaser!</title>
+        <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    </head>
+    <body>
+    <script src="sound.js"></script>
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        var textObject;
+        var keyUp;
+        var keyDown;
+        var keyRight;
+        var keyLeft;
+        var keySpace;
+        var s;
+        var music;
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+
+        function preload () {
+            game.load.audio('bonestrousle', ['/home/jujulejaffa/Musique/Bonestrousle.mp3']);
+        }
+
+
+
+        function create () {
+
+            game.stage.backgroundColor = 0xbada55;
+            textObject = game.add.text(game.world.centerX, game.world.centerY, "None");
+            textObject.anchor.setTo(0.5, 0.5);
+            keyUp = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+            keyUp.onDown.add(upEventFunction, this);
+
+            keyDown = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+            keyDown.onDown.add(downEventFunction, this);
+
+            keyRight = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+            keyRight.onDown.add(rightEventFunction, this);
+
+            keyLeft = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+            keyLeft.onDown.add(leftEventFunction, this);
+
+            keySpace = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+            keySpace.onDown.add(spaceEventFunction, this);
+
+            music = game.add.audio('bonestrousle');
+            Con
+            music.play();
+
+        }
+
+        function upEventFunction() {
+            textObject.text = "Up pressed";
+        }
+
+        function downEventFunction() {
+            textObject.text = "Down pressed";
+        }
+        function rightEventFunction() {
+            textObject.text = "Right pressed";
+        }
+        function leftEventFunction() {
+            textObject.text = "Left pressed";
+        }
+        function spaceEventFunction() {
+            textObject.text = "Spacebar pressed";
+        }
+
+
+
+    }
+
+    </script>
+    </body>
+</html>-
